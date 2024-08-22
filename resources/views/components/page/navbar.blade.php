@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Lärmkontrollen</a>
+    <a class="navbar-brand" href="/">{{ config("app.name") }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,12 +10,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/">Start </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/club">Clubs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/inspection">Kontrollen</a>
-            </li>
+
+            @can("file")
+                <li class="nav-item active">
+                    <a class="nav-link" href="/edit/file">Dokumente verwalten </a>
+                </li>
+            @endcan
 
             @can("admin.user")
                 <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
             @endcan
            {{-- --}}
             <li class="nav-item">
-                <a class="nav-link" href="/profile">Profil</a>
+                <form action="/logout" method="POST"> @csrf <button class="nav-link" type="submit">Abmelden</button></form>
             </li>
         </ul>
 

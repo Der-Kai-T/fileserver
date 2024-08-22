@@ -18,6 +18,7 @@
         {{isset($step) ? "step=".$step : "" }}
         {{isset($min) ? "min=".$min : "" }}
         {{isset($max) ? "max=".$max : "" }}
+        {{isset($accept) ? "accept=".$accept : "" }}
         @if(isset($onchange))
             onchange = "{{ $onchange }}"
         @endif

@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +16,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        if(config("app.env") == "local"){
+            $password = "password";
+        }else{
+            $password = Str::password();
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $admin = User::create([
+            "name" => "Administrator",
+            "email" => "admin@example.org",
+            "password" => Hash::make($password),
         ]);
+
+        $this->command->info( "Super-Admin created: " . $admin->email . " with Password  " . $password );
+        $this->command->newLine();
+        $superadmin = Role::create(["name" => "super-admin"]);
+        $admin->assignRole($superadmin);
+
+        $this->call([
+            PermissionSeeder::class,
+
+        ]);
+
     }
 }
