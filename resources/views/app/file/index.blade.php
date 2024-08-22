@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     Liste aller Dokumente
-                    @can("file.upload")
+                    @can("file.create")
                         <a href="/edit/file/create">neue Datei anlegen</a>
                         @endcan
                 </div>
