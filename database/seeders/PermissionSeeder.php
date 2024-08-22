@@ -14,6 +14,7 @@ class PermissionSeeder extends Seeder
             "file.create",
             "file.update",
             "file.destroy",
+            "file",
             "admin.user",
         ];
 
