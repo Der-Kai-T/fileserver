@@ -93,6 +93,11 @@ class AdminUserController extends Controller
         ]);
 
         foreach($data["name"] as $name){
+            if($name == "super-admin"){
+                if(!auth()->user()->hasRole("super-admin")){
+                    continue;
+                }
+            }
             $role = Role::where("name", $name)->first();
             $user->assignRole($role);
         }
@@ -109,6 +114,11 @@ class AdminUserController extends Controller
         ]);
 
         foreach($data["name"] as $name){
+            if($name == "super-admin"){
+                if(!auth()->user()->hasRole("super-admin")){
+                    continue;
+                }
+            }
             $role = Role::where("name", $name)->first();
             $user->removeRole($role);
         }
