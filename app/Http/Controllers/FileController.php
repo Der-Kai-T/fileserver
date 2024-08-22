@@ -33,7 +33,7 @@ class FileController extends Controller
         $this->check_permission("file.create");
         $data = $request->validate([
             'title' => 'required',
-            'file' => 'required|file|mimes:pdf',
+            'file' => 'required|file',
             'note' => ['nullable', 'string'],
         ]);
 

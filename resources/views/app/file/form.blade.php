@@ -40,9 +40,8 @@
                         @if(!$patch)
                         <x-form.input
                             name="file"
-                            label="Datei auswählen (nur .pdf)"
+                            label="Datei auswählen"
                             type="file"
-                            accept=".pdf"
                             required
                             />
 
