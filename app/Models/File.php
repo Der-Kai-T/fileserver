@@ -10,6 +10,7 @@ class File extends Model
     use Uuids;
     protected $fillable = [
         'file_name',
+        'file_type',
         'title',
         'note',
     ];
