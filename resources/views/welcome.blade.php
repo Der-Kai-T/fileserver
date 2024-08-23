@@ -29,7 +29,7 @@ $files = \App\Models\File::all();
                                 </div>
                             @endif
                             <div class="card-footer">
-                                <a href="/file/{{$file->id}}" class="btn btn-outline-dark"><span class="fas fa-file-pdf"></span>  Dokument herunterladen</a>
+                                <a href="/file/{{$file->id}}" class="btn btn-outline-dark"><span class="fas fa-file-download"></span>  Dokument herunterladen</a>
                             </div>
                         </div>
 
